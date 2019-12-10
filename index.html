@@ -1,0 +1,192 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="styles/normalize.css">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>TESLA</title>
+		<link rel="stylesheet" 
+		href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
+		<link href="hamburgers-master/dist/hamburgers.css" rel="stylesheet">
+		<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+		<link rel="stylesheet" href="fonts/fonts.css">
+    	<!-- <link rel="stylesheet" type="text/css" href="./styles/debug.css"> -->
+		<link rel="stylesheet" type="text/css" href="./styles/helpers.css">
+		<link rel="stylesheet" type="text/css" href="./styles/grid.css">
+		<link rel="stylesheet" type="text/css" href="./styles/main.css">
+	</head>
+	<body>
+
+<!-- .hero -->
+<section class="hero is-fullheight">
+		<aside class="menu">
+				<p class="menu-label mobile">
+				Biler
+				</p>
+				<ul class="menu-list mobile">
+						<li><a href="ModelS.html">MODEL S </a></li>
+						<li><a href="ModelX.html">MODEL X</a></li>
+						<li><a href="Model3.html">MODEL 3</a></li>
+						<li><a href="Roadster.html">ROADSTER</a></li>
+						<li><a href="interactive.html">ENERGI</a></li>
+					</ul>
+					<ul class="menu-list desktop">
+						<p class="menu-label desktop">Energi</p>
+							<li><a>Solpaneler</a></li>
+							<li><a>Solar Roof</a></li>
+							<li><a>Powerwall</a></li>
+						<p class="menu-label desktop">Generelt</p>
+							<li><a>Få nyhedsbrev</a></li>
+							<li><a>Nyheder</a></li>
+							<li><a>Brugte biler</a></li>
+							<li><a>Besøg en butik</a></li>
+							<li><a>Opladning</a></li>
+						</ul>
+						
+						<div class="dropdown mobile">
+								<div class="dropdown-trigger">
+								  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+									<span>Vis mere</span>
+									<span class="icon is-small">
+									  <i class="fas fa-angle-down" aria-hidden="true"></i>
+									</span>
+								  </button>
+								</div>
+								<div onclick="ToggleDropdown()" class="dropdown-menu" id="dropdown-menu" role="menu">
+   									<div class="dropdown-content">
+										<a href="#" class="dropdown-item">
+											Solpaneler
+										</a>
+										<a href="#" class="dropdown-item">
+												Solar roof
+											</a>
+											<a href="#" class="dropdown-item">
+													Powerwall
+												</a>
+												<hr class="dropdown-divider">
+												<a href="#" class="dropdown-item">
+														Få nyhedsbrev
+													</a>
+													<a href="#" class="dropdown-item">
+															Nyheder
+														</a>
+														<a href="#" class="dropdown-item">
+																Brugte biler
+															</a>
+															<a href="#" class="dropdown-item">
+																	Besøg en butik
+																</a>
+																<hr class="dropdown-divider">
+																<a href="#" class="dropdown-item">
+																		LOG IND
+																	</a>
+									</div>
+		</aside>
+
+<!-- .hero-head -->
+<nav class="hero-head">
+	<div class="columns is-mobile is-marginless heading has-text-weight-bold">
+		<div class="column left">
+			<figure class="navbar-item image">
+				<img href="Tesla.html"src="images/tesla.svg" style="width: 6.25rem; height: 1rem;">
+			</figure>
+		</div>
+		<div class="column center desktop">
+			<p onclick="window.location.href = 'ModelS.html';" class=" navbar-item ">MODEL S </p>
+			<p onclick="window.location.href = 'ModelX.html';" navbar-item ">MODEL X </p>
+			<p onclick="window.location.href = 'Model3.html';" class=" navbar-item ">MODEL 3 </p>
+			<p onclick="window.location.href = 'Roadster.html';" class=" navbar-item ">ROADSTER</p>
+			<p onclick="window.location.href = 'Energy.html';" class=" navbar-item ">ENERGI  </p>
+		</div>
+		<div class="column right">
+			<p class="navbar-item desktop ">LOG IND</p>
+				<button class="hamburger hamburger--emphatic" type="button">
+					<span class="hamburger-box">
+					  <span class="hamburger-inner"></span>
+					</span>
+			</button>
+		</div>
+	</div>
+</nav>
+<!-- /.hero-head -->
+
+<!-- .hero-body -->
+<header class="hero-body">
+	<div class="is-overlay has-text-centered single-spaced" style="top: 92px;">
+		<h1 class="title is-1 has-text-grey-darker">VORES VISION FOR FREMTIDEN</h1>
+	</div>
+</header>
+<!-- /.hero-body -->
+
+	</div>
+</section>
+
+<!-- /.hero -->
+<div class="box" id="box_cars">
+	<section class="section" id="showcase">
+		<div class="tile is-ancestor">
+			<div class="tile is-vertical">
+			<div class="tile">
+					<div class="tile is-parent is-vertical is-4">
+						<article class="tile is-child notification" id="model3-showcase" onclick="window.location.href='Model3.html'>
+						<p class="title">Model 3</p>
+						</article>
+						<article class="tile is-child notification" id="modelS-showcase" onclick="window.location.href='ModelS.html'>
+						<p class="title">Model S</p>
+						</article>
+					</div>
+					<div class="tile is-parent is-vertical is-8">
+						<article class="tile is-child notification is-primary" id="modelX-showcase" onclick="window.location.href='ModelX.html'>
+							<p class="title">Model X</p>
+						</article>
+						<article class="tile is-child notification" id="Roadster-showcase" onclick="window.location.href='Roadster.html'">
+							<p class="title">Roadster</p>
+						</article>
+					</div>
+				</div>
+		</div>
+	</section>
+</div>
+
+<footer class="footer " style="margin:auto; width: 65%;">
+	<div id="grid-footer">
+			<div id="a" class="center-column">
+					<p class="has-text-grey">
+						Tesla &copy; 2019
+					</p>
+				</div>
+			<div id="b" class="center-column" style="border-left: 1px solid grey;">
+					<p class="has-text-grey">
+						Fortrolighed & Jura
+					</p>
+				</div>
+			<div id="c" class="center-column" style="border-left: 1px solid grey;">
+					<p class="has-text-grey">
+						Kontakt
+					</p>
+				</div>
+			<div id="d" class="center-column" style="border-left: 1px solid grey;">
+					<p class="has-text-grey">
+						Karriere
+					</p>
+				</div>
+			<div id="e" class="center-column" style="border-left: 1px solid grey;">
+					<p class="has-text-grey">
+						Få nyhedsbrev
+					</p>
+				</div>
+			<div id="f" class="center-column" style="border-left: 1px solid grey;">
+					<p class="has-text-grey">
+						Afdelinger
+					</p>
+				</div>
+				<div id="g" class="center-column" style="border-left: 1px solid grey;">
+					<figure class="image">
+							<img src="images/flag-denmark.svg" style="width: 1rem; height: 1rem;">
+						</figure>
+				</div>
+	</div>
+</footer>
+		<script src="index.js"></script>
+		<script src="https://interactive-img.com/js/include.js"></script>
+	</body>
+</html>

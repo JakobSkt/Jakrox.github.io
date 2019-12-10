@@ -1,0 +1,54 @@
+/* background */		
+.hero {
+	background: black url(../images/hero-1.jpg) center / cover;
+}
+
+@media (max-width: 1024px) { .hero { background: black url(../images/hero-2.jpg) center / cover; } }
+@media (max-width:  768px) { .hero { background: black url(../images/hero-3.jpg) center / cover; } }
+
+/* responsive */
+@media (max-width: 768px) {
+	:root {
+		font-size: 90%;
+	}
+}
+
+.navbar-item
+	{
+		color: black;
+	}
+
+.navbar-item:hover
+	{
+		color: white;
+		cursor: pointer;
+	}
+
+
+.hamburger
+	{
+		z-index: 2;
+	}
+
+.hamburger:focus
+	{
+		outline: 0;
+	}
+
+.menu
+	{
+		position: absolute;
+		display: none;
+		padding: 25px;
+		right: 0px;
+		transition: all 2s linear;
+		background: white;
+		z-index: 1;
+	}
+
+.hero-body .mobile
+{
+	position: relative;
+	top: -55px;
+
+}

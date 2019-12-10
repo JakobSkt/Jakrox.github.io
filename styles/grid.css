@@ -1,0 +1,60 @@
+#a { grid-area: a; }
+#b { grid-area: b; }
+#c { grid-area: c; }
+#d { grid-area: d; }
+#e { grid-area: e; }
+
+#grid {
+    display: grid;
+    grid-template-areas:
+        "a a a a"
+        "b c d e";
+
+    grid-row-gap: 1rem;
+}
+
+@media (max-width: 512px) {
+    #grid {
+        grid-template-areas:
+            "a a a"
+            "b c d"
+            "e e e";
+    }
+}
+
+#grid-footer {
+    display: grid;
+    grid-template-areas:
+        "a b c d e f g";
+
+    grid-row-gap: 1rem;
+}
+
+
+@media (max-width: 1024px) {
+    #grid-footer {
+        grid-template-areas:
+        "a b g";
+    }
+}
+#cars-showcase {
+    display: grid;
+    grid-template-areas: 
+        "a b b"
+        "c d d";
+    
+    grid-gap: 1rem;
+
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 512px) {
+    #cars-showcase {
+        grid-template-areas: 
+        "a"
+        "b"
+        "c"
+        "d";
+    }
+}
