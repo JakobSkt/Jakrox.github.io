@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<title>Gennemsnitsregner</title>
+</head>
+<body>
+<section id="1" class="hero is-info is-fullheight">
+  <div class="hero-body">
+    <div class="">
+     	<h1 class="title">Gennemsnitsberegner</h1>
+		<p class="subtitle">Indtast dine karaterer, og få dit vægtede gennemsnit</p>
+		<!-- <button class="button is-large is-danger" onclick="document.getElementById('2').scrollIntoView();">Gå i gang</button> -->
 
+		<a class="button is-large is-danger" href="#2">Gå i gang</a>
+    </div>
+  </div>
+</section>
+
+<section id="2" class="hero is-primary is-fullheight">
+  <div class="hero-body">
+    <div class="floating-back">
+  		<a href="#1" >
+	  		<span class="icon-text">
+			  <span class="icon">
+			    <i class="fas fa-arrow-left"></i>
+			  </span>
+			  <span>Tilbage</span>
+			</span>
+		</a>
+  	</div>
+    <div class="">
+     	<h1 class="title">Uddannelse</h1>
+		<p class="subtitle">Først skal vi vide lidt om <b>din</b> uddannelse<br> Vælg din uddannelsesinstitution</p>
+
+		<div class="columns">
+		  <div class="column">
+		   <button onclick="schoolSelect('stx')" class="button is-danger is-medium">STX</button>
+		  </div>
+		  <div class="column">
+		   <button onclick="schoolSelect('hf')" class="button is-info is-medium">HF</button>
+		  </div>
+		  <div class="column">
+		    <button onclick="schoolSelect('hhx')" class="button is-info is-medium">HHX</button>
+		  </div>
+		  <div class="column">
+		    <a onclick="schoolSelect('htx')" href="#3" class="button is-link is-medium">HTX</a>
+		  </div>
+		</div>
+    </div>
+  </div>
+</section>
+
+	<script type="text/javascript" src="main.js"></script>
+</body>
+</html>

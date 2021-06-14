@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Monda&family=Montserrat&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+ 
+
+* {
+	font-family: 'Monda', sans-serif;
+}
+
+
+p {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.floating-back {
+	position: relative;
+	margin-top: -95vh;
+	margin-left: 0;
+	cursor: pointer;
+}
+
+.grades {
+	margin-bottom: 2vh;
+}
+
+.columns div {
+	margin-left: 2vw;
+}
+
+.errorMessage {
+	position: relative;
+  top: -8vh;
+
+  padding: 5px 10px;
+  border-radius: 2px;
+
+  color: #fd7e14;
+  background: rgb(21 21 21 / 94%);
+  text-shadow: 2px 2px 4px black;
+  box-shadow: 0px 3px 6px 0px #6f6f6f;
+}
+
+.snit {
+	font-size: 3em;
+  margin-top: -2vh;
+}
