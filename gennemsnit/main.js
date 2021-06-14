@@ -1,5 +1,3 @@
-console.log('Hello world!')
-
 let accepted = [-3, 00, 02, 4, 7, 10, 12]
 let schoolColors = ['danger', 'info', 'info', 'link']
 
@@ -37,9 +35,25 @@ function schoolSelect(selected) {
 }
 
 function remove(page) {
-	const el = document.querySelector('#' + page + '')
+	if(page === 'all') {
+		let front = document.querySelector('#page1')
 
-	setTimeout(function(){ el.remove(); }, 500);
+		front.scrollIntoView()
+
+		const sections = document.querySelectorAll('section')
+		setTimeout(function(){ 
+				for(let i = 2; i < 9; i++) {
+
+				sections[i].remove()
+			} 
+		}, 1000);
+		
+	} else {
+
+		const el = document.querySelector('#' + page + '')
+
+		setTimeout(function(){ el.remove(); }, 500);
+	}
 }
 
 function dynPage1(fag) {
@@ -76,7 +90,7 @@ function dynPage1(fag) {
 	el.innerHTML = `
 <div class="hero-body">
   	<div class="floating-back">
-  		<a href="#2" onclick="remove('page1${fag}')">
+  		<a href="#page2" onclick="remove('page1${fag}')">
 	  		<span class="icon-text">
 			  <span class="icon">
 			    <i class="fas fa-arrow-left"></i>
@@ -89,9 +103,9 @@ function dynPage1(fag) {
      	<h1 class="title">${school.toUpperCase()}</h1>
 		<p class="subtitle">Hvor mange ${title}-fag har du?</p>
 
-		<div class="select is-rounded">
+		<div class="select" id="select${fag}" is-rounded">
 		  <select id="${title}GradesSelect">
-		    <option>Antal ${title}-fag</option>
+		    <option disabled selected>Antal ${title}-fag</option>
 		    <option>${options[0]}</option>
 		    <option>${options[1]}</option>
 		    <option>${options[2]}</option>
@@ -99,7 +113,7 @@ function dynPage1(fag) {
 		  </select>
 		</div>
 
-		<a href="#4" onclick="dynPage2('${title}')" class="button is-medium is-success">Fortsæt</a>
+		<a href="#4" onclick="page1Check('${title}')" class="button is-medium is-success">Fortsæt</a>
     </div>
   </div>
   `;
@@ -111,6 +125,32 @@ function dynPage1(fag) {
   setTimeout(function(){ el.scrollIntoView(); }, 50);
 }
 
+function page1Check(fag) {
+	if(isNaN(document.querySelector('#' + fag + 'GradesSelect').value)) {
+
+		if(!document.querySelector('#errorSelect' + fag)) {
+			const error = document.createElement('span')
+			error.className = `errorMessage`
+			error.id = `errorSelect${fag}`
+			error.innerHTML = `
+				<i class="fas fa-exclamation-triangle"></i>
+				Vælg et gyldigt antal fag
+			`
+
+			document.querySelector('#select' + fag).append(error)
+		}
+		
+	} else {
+
+		if(document.querySelector('#errorSelect' + fag)) {
+
+			document.querySelector('#errorSelect' + fag).remove()
+			
+		}
+
+		dynPage2(fag)
+	}
+}
 function dynPage2(fag) {
 	let body = document.body
 	let next 
@@ -161,7 +201,7 @@ function dynPage2(fag) {
   setTimeout(function(){
 
 	  for (var i = 0; i < grades; i++) {
-	  	console.log('created input')
+	  	//console.log('created input')
 		  	let column = document.querySelector('#grades' + fag)
 		  	const detail = document.createElement('div')
 			detail.innerHTML = `
@@ -191,7 +231,7 @@ function dynPage3(school) {
   		<a href="#1" onclick="remove('all')">
 	  		<span class="icon-text">
 			  <span class="icon">
-			    <i class="fas fa-arrow-left"></i>
+			    <i class="fas fa-home"></i>
 			  </span>
 			  <span>Hjem</span>
 			</span>
@@ -320,7 +360,7 @@ function getGrades(fag, number, next) {
 		}
 	}
 
-	console.log(fag + ': ' + temp)
+	//console.log(fag + ': ' + temp)
 
 	switch(fag) {
 		case 'A':
