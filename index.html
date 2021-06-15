@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<title>Oversigt</title>
+</head>
+<body>
+<section id="page1" class="hero is-link is-fullheight">
+  <div class="hero-body">
+    <div class="">
+     	<h1 class="title">Oversigt</h1>
+		<p class="subtitle"> Her kan du se nogle af mine personlige projekter, fra de senete år </p>
+		<a class="button is-large is-danger" href="#page2">Se projekter</a>
+    </div>
+  </div>
+</section>
+
+<section id="page2" class="hero is-success is-fullheight">
+  <div class="hero-body">
+    <div class="floating-back">
+  		<a href="#page1" >
+	  		<span class="icon-text">
+			  <span class="icon">
+			    <i class="fas fa-arrow-left"></i>
+			  </span>
+			  <span>Tilbage</span>
+			</span>
+		</a>
+  	</div>
+    <div class="">
+     	<h1 class="title">Projekter</h1>
+		<p class="subtitle">Klik for læse mere om projekterne, og gå til deres repspektive sider </p>
+
+		<div class="columns">
+		  <div class="column">
+		  	<button class="button is-info" id="projects"><a href="./tesla/index.html"> Tesla-remake in Bulma <span class="year has-text-danger">2019</span></a></button>
+		  </div>
+		  <div class="column">
+		  	<button class="button is-link" id="projects"><a href="./gennemsnit/index.html"> Gennemsnitsberegner <span class="year has-text-info">2021</span></a></button>
+		  </div>
+		</div>
+    </div>
+  </div>
+</section>
+
+	<script type="text/javascript" src="main.js"></script>
+</body>
+</html>

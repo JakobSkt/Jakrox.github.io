@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Monda&family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+ 
+
+* {
+	font-family: 'Monda', sans-serif;
+}
+
+
+p {
+	font-family: 'Montserrat', sans-serif;
+}
+
+a {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.floating-back {
+	position: relative;
+	margin-top: -95vh;
+	margin-left: 0;
+	cursor: pointer;
+}
+
+.year {
+	font-family: 'Teko', sans-serif;
+	font-size: 2.5em;
+
+	position: relative;
+    top: -2vh;
+    left: 3vw;
+
+	text-shadow: 1px 1px 1px white;   
+}
+
+#projects {
+	padding:  1.5em;
+}
