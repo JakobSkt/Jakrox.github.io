@@ -4,15 +4,15 @@
   
   /* background */		
   .hero {
-      background: black url(./images/homepage-solar-energy@2x.jpg) center / cover;
+      background: black url(../images/homepage-solar-energy@2x.jpg) center / cover;
   }
   
   body {
       font-family: 'Gotham Bold';
   }
   
-  @media (max-width: 1024px) { .hero { background: black url(./images/homepage-solar-energy@2x.jpg) center / cover; } }
-  @media (max-width:  768px) { .hero { background: black url(./images/homepage-solar-energy.jpg) center / cover; } }
+  @media (max-width: 1024px) { .hero { background: black url(../images/homepage-solar-energy@2x.jpg) center / cover; } }
+  @media (max-width:  768px) { .hero { background: black url(../images/homepage-solar-energy.jpg) center / cover; } }
   
   /* responsive */
   @media (max-width: 768px) {
@@ -95,7 +95,7 @@
   /* @media (max-width: 1024px) {.model3-showcase {font-size: 20px}}; */
   
  #Roadster-showcase {
-      background: black url("./images/hero-1.jpg");
+      background: black url("../images/hero-1.jpg");
       background-size: 100%;
       background-position: 50% 52.5%;
       /* background-color: rgb(100, 100, 100); */
@@ -140,7 +140,7 @@
   }
   
   #model3-showcase {
-    background-image: url("./images/model3.jpg");
+    background-image: url("../images/model3.jpg");
     background-size: 100%;
     background-position: 50% 70%;
     /* background-color: rgb(100, 100, 100); */
@@ -186,7 +186,7 @@ opacity: 0.2;
 }
   
 #modelX-showcase {
-    background-image: url("./images/modelX.jpg");
+    background-image: url("../images/modelX.jpg");
     background-size: 100%;
     background-position: 50% 70%;
     /* background-color: rgb(100, 100, 100); */
@@ -232,7 +232,7 @@ opacity: 0.2;
 }
 
   #modelS-showcase {
-      background-image: url("./images/modelS-1.jpg");
+      background-image: url("../images/modelS-1.jpg");
       background-size: 100%;
       background-position: 50% 70%;
       /* background-color: rgb(100, 100, 100); */
