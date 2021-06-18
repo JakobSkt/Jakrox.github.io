@@ -4,12 +4,18 @@ let schoolColors = ['danger', 'info', 'info', 'link']
 let school = ''
 let schoolId = null
 
+let schoolProject = [
+	'Her skal du også indtaste SRP (derfor det ekstra felt)',
+	'Intet studieretnings projekt her',
+	'Her skal du også indtaste SOP (derfor det ekstra felt)',
+	'Her skal du også indtaste SOP (derfor det ekstra felt)'
+]
+
 let grades
 
 let AGrades = []
 let BGrades = []
 let CGrades = []
-
 
 function schoolSelect(selected) {
 	school = selected
@@ -67,22 +73,26 @@ function dynPage1(fag) {
 
 	let body = document.body
 
-	let AOptions = [3, 4, 5, 6]
-	let BOptions = [2, 3, 4, 5]
-	let COptions = [1, 2, 3, 4]
+	let AOptions = [2, 3, 4, 5, 6]
+	let BOptions = [4, 5, 6, 7, 8]
+	let COptions = [1, 2, 3, 4, 5]
 	let options = []
+	let previous
 
 	switch(title) {
 		case 'A':
 		 options = AOptions
+		 previous = 'A'
 		 break;
 
 		case 'B':
 		 options = BOptions
+		 previous = 'A'
 		 break;
 
 		case 'C':
 		 options = COptions
+		 previous = 'B'
 		 break;
 	}
 	
@@ -90,7 +100,7 @@ function dynPage1(fag) {
 	el.innerHTML = `
 <div class="hero-body">
   	<div class="floating-back">
-  		<a href="#page2" onclick="remove('page1${fag}')">
+  		<a href="#page2${previous}" onclick="remove('page1${fag}')">
 	  		<span class="icon-text">
 			  <span class="icon">
 			    <i class="fas fa-arrow-left"></i>
@@ -110,10 +120,11 @@ function dynPage1(fag) {
 		    <option>${options[1]}</option>
 		    <option>${options[2]}</option>
 		    <option>${options[3]}</option>
+		    <option>${options[4]}</option>
 		  </select>
 		</div>
 
-		<a href="#4" onclick="page1Check('${title}')" class="button is-medium is-success">Fortsæt</a>
+		<a href="#page2${fag}" onclick="page1Check('${title}')" class="button is-medium is-success">Fortsæt</a>
     </div>
   </div>
   `;
@@ -133,7 +144,8 @@ function page1Check(fag) {
 			error.className = `errorMessage`
 			error.id = `errorSelect${fag}`
 			error.innerHTML = `
-				<i class="fas fa-exclamation-triangle"></i>
+				<i class="fas fa-caret-down fa-3x" id="pointing"></i>
+				<i class="fas fa-exclamation-triangle" id="errorIcon"></i>
 				Vælg et gyldigt antal fag
 			`
 
@@ -154,10 +166,16 @@ function page1Check(fag) {
 function dynPage2(fag) {
 	let body = document.body
 	let next 
+	let grades = parseInt(document.querySelector('#' + fag + 'GradesSelect').value)
 
 	switch(fag) {
 		case 'A': 
 			next = 'B'
+
+			if(school !== 'hf') {
+				
+				grades += 1
+			}
 			break;
 
 		case 'B': 
@@ -169,24 +187,20 @@ function dynPage2(fag) {
 			break;
 	}
 
-	grades = document.querySelector('#' + fag + 'GradesSelect').value
-
+	
 	const el = document.createElement('section')
 	el.innerHTML = `
   <div class="hero-body">
   	<div class="floating-back">
-  		<a href="#3" onclick="remove('page2${fag}')">
-	  		<span class="icon-text">
-			  <span class="icon">
-			    <i class="fas fa-arrow-left"></i>
-			  </span>
-			  <span>Tilbage</span>
-			</span>
+  		<a href="#page1${fag}" onclick="remove('page2${fag}')">
+			<i class="fas fa-arrow-left"></i>
+			<span>Tilbage</span>
 		</a>
+
   	</div>
     <div class="">
-     	<h1 class="title">${school.toUpperCase()} - ${grades} ${fag}-fag</h1>
-		<p class="subtitle">Hvilke karakterer fik du i de fag? <br>Indtast den samlede karakter, medmindre du markerer andet i afkrydsningsfeltet</p>
+     	<h1 class="title">${school.toUpperCase()} - ${grades - 1} ${fag}-fag</h1>
+		<p class="subtitle">Hvilke karakterer fik du i de fag? <br>Indtast den samlede karakter, medmindre du markerer andet i afkrydsningsfeltet <br> ${schoolProject[schoolId]}</p>
 
 		<div id="grades${fag}" class="columns"></div>
 
@@ -206,7 +220,7 @@ function dynPage2(fag) {
 		  	const detail = document.createElement('div')
 			detail.innerHTML = `
 				  	<label class="checkbox">
-						  <input id="samlet${i+1}" class="samlet" onclick="handleSamlet(${i+1}, '${fag}')" type="checkbox">
+						  <input id="samlet${i+1 + fag}" class="samlet" onclick="handleSamlet(${i+1}, '${fag}')" type="checkbox">
 						  Både skriftligt og mundtligt?
 						</label>
 
@@ -257,7 +271,7 @@ function dynPage3(school) {
 }
 
 function handleSamlet(index, fag) {
-	const element = document.querySelector('#samlet' + index)
+	const element = document.querySelector('#samlet' + index + fag)
 	const column = document.querySelector('.column' + index + fag)
 
 
@@ -296,7 +310,13 @@ function getGrades(fag, number, next) {
 	let success = true
 
 	for (var i = 1; i <= number; i++) {
+		let check = document.querySelector('#samlet' + i + fag).checked
 		let grade = document.querySelector('#samlet' + i + fag + 'Input').value
+
+		if(check) {
+
+			temp.push(9999)
+		}
 
 		if(accepted.includes(parseInt(grade))) {
 
@@ -317,7 +337,8 @@ function getGrades(fag, number, next) {
 				error.className = `errorMessage`
 				error.id = `error${i + fag}`
 				error.innerHTML = `
-					<i class="fas fa-exclamation-triangle"></i>
+					<i class="fas fa-caret-down fa-3x" id="pointing"></i>
+					<i class="fas fa-exclamation-triangle" id="errorIcon"></i>
 					Indtast en gyldig karakter
 									`
 
@@ -326,6 +347,11 @@ function getGrades(fag, number, next) {
 		}
 
 		if(ekstra = document.querySelector('#ekstra' + i + fag + 'Input')) {
+
+			if(check) {
+
+				temp.push(9999)
+			}
 
 			if(accepted.includes(parseInt(ekstra.value))) {
 
@@ -346,7 +372,8 @@ function getGrades(fag, number, next) {
 					error.className = `errorMessage`
 					error.id = `error${'ekstra' + i + fag}`
 					error.innerHTML = `
-						<i class="fas fa-exclamation-triangle"></i>
+						<i class="fas fa-caret-down fa-3x" id="pointing"></i>
+						<i class="fas fa-exclamation-triangle" id="errorIcon"></i>
 						Indtast en gyldig karakter
 										`
 
@@ -360,7 +387,7 @@ function getGrades(fag, number, next) {
 		}
 	}
 
-	//console.log(fag + ': ' + temp)
+	console.log(fag + ': ' + temp)
 
 	switch(fag) {
 		case 'A':
@@ -391,26 +418,115 @@ function calcSnit() {
 	let total = 0
 	let vægte = [2, 1.5, 1]
 	let qty = 0
+	let double = false
+
+	let aLength = 0
+	let bLength = 0
+	let cLength = 0
+
+	AGrades = [9999, 12, 9999, 12, 9999, 10, 9999, 10, 12, 7]
+	console.log("AGrades", AGrades);
 
 	for (let i = 0; i < AGrades.length; i++) {
 
-		total += (AGrades[i] * vægte[0])
-		qty += vægte[0]
+		if(AGrades[i] == 9999) {
+
+			double = true
+			console.log("double", double);
+			continue;
+		}
+
+		if(double) {
+
+			total += ((AGrades[i]) * (vægte[0] / 2))
+
+			qty += (vægte[0] / 2)
+
+			aLength += 0.5
+
+		} else {	
+			
+			total += (AGrades[i] * vægte[0])
+			
+			qty += vægte[0]
+
+			aLength += 1
+			
+		}
+
+		double = false
 	}
 
 	for (let i = 0; i < BGrades.length; i++) {
 
-		total += (BGrades[i] * vægte[1])
-		qty += vægte[1]
+		if(BGrades[i] == 9999) {
+
+			double = true
+			//console.log("double", double);
+			continue;
+		}
+
+		if(double) {
+
+			total += ((BGrades[i]) * (vægte[1] / 2))
+
+			qty += (vægte[1] / 2)
+
+			bLength += 0.5
+
+		} else {
+
+			total += (BGrades[i] * vægte[1])
+			
+			qty += vægte[1]
+
+			bLength += 1
+			
+		}
+
+		double = false
 	}
 
 	for (let i = 0; i < CGrades.length; i++) {
 
-		total += (CGrades[i] * vægte[2])
-		qty += vægte[2]
+		if(CGrades[i] == 9999) {
+
+			double = true
+			//console.log("double", double);
+			continue;
+		}
+
+		if(double) {
+
+			total += ((CGrades[i]) * (vægte[2] / 2))
+
+			qty += (vægte[2] / 2)
+
+			cLength += 0.5
+
+		} else {
+
+			total += (CGrades[i] * vægte[2])
+			
+			qty += vægte[2]
+
+			cLength += 1
+			
+		}
+
+		double = false
 	}
 
 	let snit = total/qty
+	
+	if(AGrades.length === 5) {
 
-	return [snit, AGrades.length, BGrades.length, CGrades.length ]
+		snit = snit * 1.03	
+
+	} else if (AGrades.length === 6) {
+
+			snit = snit * 1.06
+	}
+
+	return [snit, aLength, bLength, cLength]
 }

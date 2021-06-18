@@ -37,6 +37,48 @@ a {
 	text-shadow: 1px 1px 1px white;   
 }
 
-#projects {
-	padding:  1.5em;
+#tesla {
+	padding:  4.5em;
+	width: 40vw;
+	background: url('./images/teslaThumbnail.png');
+	background-size: 100%;
+	 background-position: top;
+	filter: grayscale(1);
+	transition: background-size 150ms ease-out;
+}
+
+#tesla:hover {
+	transition: 100ms ease-in;
+	transition: background-size 300ms ease-in;
+	filter:  grayscale(0);
+
+	background-size: 110%;
+  background-position: top;
+}
+
+#gennemsnit {
+	padding: 4.5em;
+	width: 40vw;
+	background: url('./images/gennemsnitThumbnail.png');
+	background-size: 100%;
+	 background-position: left;
+	filter: grayscale(1);
+	transition: background-size 150ms ease-out;
+}
+
+#gennemsnit:hover {
+	transition: 100ms ease-in;
+	transition: background-size 300ms ease-in;
+	filter:  grayscale(0);
+
+	background-size: 110%;
+  background-position: left;
+}
+
+.cursor {
+	height: 25px;
+	width: 25px;
+	border-radius: 50%;
+
+	background: rgb(14 14 14 / 44%);
 }
