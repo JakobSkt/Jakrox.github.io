@@ -21,6 +21,10 @@ p {
 	cursor: pointer;
 }
 
+.field {
+	margin-left:  0!important;
+}
+
 .grades {
 	margin-bottom: 2vh;
 }
@@ -55,4 +59,11 @@ p {
 .snit {
 	font-size: 3em;
   margin-top: -2vh;
+}
+
+.svgbox {
+	max-width: 60vw;
+  margin-left: 35vw;
+  display: inline;
+  margin-top: -80vh;
 }

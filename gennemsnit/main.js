@@ -219,13 +219,12 @@ function dynPage2(fag) {
 		  	let column = document.querySelector('#grades' + fag)
 		  	const detail = document.createElement('div')
 			detail.innerHTML = `
-				  	<label class="checkbox">
-						  <input id="samlet${i+1 + fag}" class="samlet" onclick="handleSamlet(${i+1}, '${fag}')" type="checkbox">
-						  Både skriftligt og mundtligt?
-						</label>
+				<div class="field">
+  					<input class="samlet is-checkradio has-background-color is-white" id="samlet${i+1 + fag}" type="checkbox" onclick="handleSamlet(${i+1}, '${fag}')">
+  					<label for="samlet${i+1 + fag}">Både skriftligt og mundtligt?</label>
+				</div>
 
-				   <input class="input grades" id="samlet${i+1 + fag}Input" placeholder="Samlet karakter" required>
-				 </div>  `;
+				<input class="input grades" id="samlet${i+1 + fag}Input" placeholder="Samlet karakter" required>`;
 		  detail.className = `column${i+1 + fag}`
 
 		  column.appendChild(detail)
@@ -261,6 +260,9 @@ function dynPage3(school) {
 		${calcSnit()[2]} B-fag <br> 
 		${calcSnit()[3]} C-fag </p>
     </div>
+  </div>
+  <div class="svgbox">
+  	<img src="../illustrations/flame-graduation-1.svg">
   </div>
   `;
   el.className = `hero is-${schoolColors[schoolId]} is-fullheight`
@@ -387,7 +389,7 @@ function getGrades(fag, number, next) {
 		}
 	}
 
-	console.log(fag + ': ' + temp)
+	// console.log(fag + ': ' + temp)
 
 	switch(fag) {
 		case 'A':
@@ -417,113 +419,83 @@ function getGrades(fag, number, next) {
 function calcSnit() {
 	let total = 0
 	let vægte = [2, 1.5, 1]
+	let vægt = 0
 	let qty = 0
 	let double = false
 
+	let samletGrades = [AGrades, BGrades, CGrades]
+	// console.log("samletGrades", samletGrades);
+
+	let length = 0
 	let aLength = 0
 	let bLength = 0
 	let cLength = 0
 
-	AGrades = [9999, 12, 9999, 12, 9999, 10, 9999, 10, 12, 7]
-	console.log("AGrades", AGrades);
+for (var outer = 0; outer < samletGrades.length; outer++) {
 
-	for (let i = 0; i < AGrades.length; i++) {
+	// console.log("outer for", samletGrades[outer]);
 
-		if(AGrades[i] == 9999) {
+
+	for (let inner = 0; inner < samletGrades[outer].length; inner++) {
+
+		// console.log("inner for", samletGrades[outer][inner]);
+
+		if(samletGrades[outer][inner] == 9999) {
 
 			double = true
-			console.log("double", double);
+			// console.log("double", double);
 			continue;
 		}
 
 		if(double) {
 
-			total += ((AGrades[i]) * (vægte[0] / 2))
+			total += samletGrades[outer][inner] * (vægte[vægt] / 2)
 
-			qty += (vægte[0] / 2)
+			qty += (vægte[vægt] / 2)
 
-			aLength += 0.5
+			length += 0.5
 
 		} else {	
 			
-			total += (AGrades[i] * vægte[0])
+			total += (samletGrades[outer][inner] * vægte[vægt])
 			
-			qty += vægte[0]
+			qty += vægte[vægt]
 
-			aLength += 1
-			
-		}
-
-		double = false
-	}
-
-	for (let i = 0; i < BGrades.length; i++) {
-
-		if(BGrades[i] == 9999) {
-
-			double = true
-			//console.log("double", double);
-			continue;
-		}
-
-		if(double) {
-
-			total += ((BGrades[i]) * (vægte[1] / 2))
-
-			qty += (vægte[1] / 2)
-
-			bLength += 0.5
-
-		} else {
-
-			total += (BGrades[i] * vægte[1])
-			
-			qty += vægte[1]
-
-			bLength += 1
+			length += 1
 			
 		}
 
 		double = false
+
+		switch(outer) {
+			case 0: 
+				aLength = length
+				// console.log("aLength", aLength);
+				break;
+
+			case 1: 
+				bLength = length
+				// console.log("bLength", bLength);
+				break;
+
+			case 2: 
+				cLength = length
+				// console.log("cLength", cLength);
+				break;
+		}
 	}
 
-	for (let i = 0; i < CGrades.length; i++) {
-
-		if(CGrades[i] == 9999) {
-
-			double = true
-			//console.log("double", double);
-			continue;
-		}
-
-		if(double) {
-
-			total += ((CGrades[i]) * (vægte[2] / 2))
-
-			qty += (vægte[2] / 2)
-
-			cLength += 0.5
-
-		} else {
-
-			total += (CGrades[i] * vægte[2])
-			
-			qty += vægte[2]
-
-			cLength += 1
-			
-		}
-
-		double = false
-	}
+	vægt += 1
+	length = 0
+}
 
 	let snit = total/qty
 	
-	if(AGrades.length === 5) {
+	if(aLength === 5) {
 
 		snit = snit * 1.03	
 
-	} else if (AGrades.length === 6) {
+	} else if (aLength === 6) {
 
 			snit = snit * 1.06
 	}
