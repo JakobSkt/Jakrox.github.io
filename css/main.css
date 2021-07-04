@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Monda&family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+ 
+
+* {
+	font-family: 'Monda', sans-serif;
+}
+
+p {
+	font-family: 'Nunito', sans-serif;
+}
+
+a {
+	font-family: 'Montserrat', sans-serif;
+}
+
+/* .box {
+	background-color:white;
+	border-radius: 5px;
+	padding: 1.25em;
+	box-shadow: 0px 2px 4px black;
+} */
+
+.card {
+	transform: scale(0.97);
+	transition: 350ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+.card:hover {
+	transform: scale(1);
+	box-shadow: 0px 4px 10px #00000080;	
+}
+
+button {
+	height: auto;
+	width: 180px;
+
+	transition: width 850ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+button.hide {
+	width: 50px;
+}
+
+span {
+	width: 200px;
+	overflow: hidden;
+	margin-right: 10px;
+	transition: 850ms;
+}
+
+span.hide {
+	overflow: hidden;
+	margin-right: 0;
+}
+
+.image {
+	overflow: hidden;
+}
+
+img {
+	transform: scale(1.5);
+	transform: translateX(0px);
+
+}
+
+.floating-back {
+	position: relative;
+	margin-top: -95vh;
+	margin-left: 0;
+	cursor: pointer;
+}
+
+.year {
+	font-family: 'Teko', sans-serif;
+	font-size: 2.5em;
+
+	position: relative;
+    top: -2vh;
+    left: 3vw;
+
+	text-shadow: 1px 1px 1px white;   
+}
+
+#tesla {
+	padding:  4.5em;
+	width: 40vw;
+	background: url('../images/teslaThumbnail.png');
+	background-size: 100%;
+	background-position: top;
+	filter: grayscale(1);
+	transition: background-size 150ms ease-out;
+}
+
+#tesla:hover {
+	transition: 100ms ease-in;
+	transition: background-size 300ms ease-in;
+	filter:  grayscale(0);
+
+	background-size: 110%;
+  	background-position: top;
+}
+
+#gennemsnit {
+	padding: 4.5em;
+	width: 40vw;
+	background: url('../images/gennemsnitThumbnail.png');
+	background-size: 100%;
+	background-position: left;
+	filter: grayscale(1);
+	transition: background-size 150ms ease-out;
+}
+
+#gennemsnit:hover {
+	transition: 100ms ease-in;
+	transition: background-size 300ms ease-in;
+	filter:  grayscale(0);
+
+	background-size: 110%;
+  	background-position: left;
+}
+
+.cursor {
+	height: 25px;
+	width: 25px;
+	border-radius: 50%;
+
+	background: rgb(14 14 14 / 44%);
+}

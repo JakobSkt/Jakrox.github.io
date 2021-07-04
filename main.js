@@ -17,3 +17,13 @@
 // }
 
 // init()
+
+function hover(element) {
+    console.log(element)
+
+    const button = element.querySelector('button')
+    const span = element.querySelector('span')
+
+    button.classList.toggle('hide')
+    span.classList.toggle('hide')
+}

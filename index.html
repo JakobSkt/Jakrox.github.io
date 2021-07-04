@@ -2,14 +2,14 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="main.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="./node_modules/bulma-checkradio/dist/css/bulma-checkradio.min.css"></link>
 	<title>Oversigt</title>
 </head>
 <body>
-<section id="page1" class="hero is-link is-fullheight">
+<section id="page1" class="hero is-primary is-fullheight">
 
 	<nav class="navbar has-background-dark" role="navigation" aria-label="main navigation">
 	<div class="navbar-brand">
@@ -34,7 +34,7 @@
 	</div>
 </nav>
 
-  <div class="hero-body has-background-info-dark">
+  <div class="hero-body">
     <div class="">
      	<h1 class="title">Oversigt</h1>
 		<p class="subtitle"> Her kan du se nogle af mine personlige projekter, fra de senete år </p>
@@ -43,7 +43,7 @@
   </div>
 </section>
 
-<section id="page2" class="hero is-fullheight is-success">
+<section id="page2" class="hero is-fullheight is-info ">
   <div class="hero-body">
     <div class="floating-back">
   		<a href="#page1" >
@@ -60,15 +60,109 @@
 		<p class="subtitle">Klik for læse mere om projekterne, og gå til deres repspektive sider </p>
 
 		<div class="columns">
-		  <div class="column">
-		  	<button class="button is-info" id="tesla"><a href="./tesla/index.html"> Tesla-remake in Bulma <span class="year has-text-danger">2019</span></a></button>
-		  </div>
-		  <div class="column">
-		  	<button class="button is-link" id="gennemsnit"><a href="./gennemsnit/index.html"> Gennemsnitsberegner <span class="year has-text-info">2021</span></a></button>
-		  </div>
-		</div>
-    </div>
-  </div>
+			<div class="column has-text-black">
+				<div class="box">
+
+					<h2 class="subtitle is-6 has-text-black">Projects from </h2>
+					<h1 class="title has-text-danger"> 2019</h1>
+
+					<div class="card" onmouseover="hover(this)" onmouseout="hover(this)">
+						<div class="card-image">
+						  <figure class="image header">
+							<img src="./images/teslaThumbnail.png" alt="Placeholder image">
+						  </figure>
+						</div>
+			
+						<div class="card-content">
+							<div class="content">
+								<p>
+									<b>Tesla</b> is the official tesla website remade with bulma, as a side/learning project		
+								</p>
+								<time style="float: right" datetime="2019-2">February 2019</time>
+
+								<div class="block">
+									<button class=" button is-danger is-light is-rounded hide anim" onclick="window.location.href='./tesla/index.html'"> 
+										<span class="hide">Take me there</span>
+										<i class="fas fa-arrow-right fa-lg"></i>
+									</button>						
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="column has-text-black">
+				<div class="box">
+
+					<h2 class="subtitle is-6 has-text-black">Projects from </h2>
+					<h1 class="title has-text-danger"> 2020</h1>
+
+					<div class="card" onmouseover="hover(this)" onmouseout="hover(this)">
+						<div class="card-image">
+						  <figure class="image header">
+							<img src="./images/.png" alt="Placeholder image">
+						  </figure>
+						</div>
+			
+						<div class="card-content">
+							<div class="content">
+								<p>
+									<b>Placeholder</b> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab inventore, nihil quod dolorem ullam quaerat dolores officia voluptate, obcaecati laudantium vel saepe libero rerum! Minus iure voluptatibus quisquam. Adipisci, laborum.		
+								</p>
+								<time style="float: right" datetime="2019-2">2020</time>
+
+								<div class="block">
+									<button class=" button is-danger is-light is-rounded hide anim" onclick="window.location.href='./tesla/index.html'"> 
+										<span class="hide">Take me there</span>
+										<i class="fas fa-arrow-right fa-lg"></i>
+									</button>						
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal">
+				<div class="modal-background"></div>
+				<div class="modal-content">
+					<!-- Any content / Bulma components -->
+				</div>
+				<button class="modal-close is-large" aria-label="close"></button>
+			  </div>
+
+			<div class="column">
+				<div class="box">
+					<h2 class="subtitle is-6 has-text-black">Projects from </h2>
+					<h1 class="title has-text-grey"> 2021</h1>
+
+					<div class="card" onmouseover="hover(this)" onmouseout="hover(this)">
+						<div class="card-image">
+						  <figure class="image header">
+							<img src="./images/gennemsnitThumbnail.png" alt="Placeholder image">
+						  </figure>
+						</div>
+			
+						<div class="card-content">
+							<div class="content">
+								<p>
+									<b>Gennemsnitsberegner</b> is a program is quickly and easily calculate your weighted average grade
+								</p>
+								<time style="float: right" datetime="2021-6">June 2021</time>
+
+								<div class="block">
+									<button class=" button is-primary is-light is-rounded hide anim" onclick="window.location.href='./gennemsnit/index.html'"> 
+										<span class="hide">Take me there</span>
+										<i class="fas fa-arrow-right fa-lg"></i>
+									</button>						
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+    		</div>
+  		</div>
 </section>
 
 	<script type="text/javascript" src="main.js"></script>

@@ -1,89 +1,84 @@
-	// for (let i = 0; i < AGrades.length; i++) {
+function getGrades(fag, number, next) {
+	let temp = []
+	let ekstra
+	let success = true
 
-	// 	if(AGrades[i] == 9999) {
+	for (var i = 1; i <= number; i++) {
+		let check = document.querySelector('#samlet' + i + fag).checked
+		let eksamen = document.querySelector('#eksamen' + i + fag + 'Input')
+		let grade = document.querySelector('#samlet' + i + fag + 'Input').value
 
-	// 		double = true
-	// 		console.log("double", double);
-	// 		continue;
-	// 	}
 
-	// 	if(double) {
+		if(check) {
 
-	// 		total += ((AGrades[i]) * (vægte[0] / 2))
+			temp.push(9999)
+		}
 
-	// 		qty += (vægte[0] / 2)
+		if(accepted.includes(parseInt(grade))) {
 
-	// 		aLength += 0.5
+			temp.push(parseInt(grade))
 
-	// 	} else {	
-			
-	// 		total += (AGrades[i] * vægte[0])
-			
-	// 		qty += vægte[0]
+			if(document.querySelector('#error' + i + fag)) {
 
-	// 		aLength += 1
-			
-	// 	}
+					document.querySelector('#error' + i + fag).remove()
+			}
+		} else {
 
-	// 	double = false
-	// }
+			console.error('Din indtastning er ikke en karakter på 7-tals skalaen')
+			success = false
 
-	// for (let i = 0; i < BGrades.length; i++) {
+			if(!document.querySelector('#error' + i + fag)) {
 
-	// 	if(BGrades[i] == 9999) {
+				const error = document.createElement('span')
+				error.className = `errorMessage`
+				error.id = `error${i + fag}`
+				error.innerHTML = `
+					<i class="fas fa-caret-down fa-3x" id="pointing"></i>
+					<i class="fas fa-exclamation-triangle" id="errorIcon"></i>
+					Indtast en gyldig karakter
+									`
 
-	// 		double = true
-	// 		//console.log("double", double);
-	// 		continue;
-	// 	}
+				document.querySelector('.column' + i + fag).append(error)
+			}
+		}
 
-	// 	if(double) {
+		if(ekstra = document.querySelector('#ekstra' + i + fag + 'Input')) {
 
-	// 		total += ((BGrades[i]) * (vægte[1] / 2))
+			if(check) {
 
-	// 		qty += (vægte[1] / 2)
+				temp.push(9999)
+			}
 
-	// 		bLength += 0.5
+			if(accepted.includes(parseInt(ekstra.value))) {
 
-	// 	} else {
+				temp.push(parseInt(ekstra.value))
 
-	// 		total += (BGrades[i] * vægte[1])
-			
-	// 		qty += vægte[1]
+				if(document.querySelector('#errorekstra' + i + fag)) {
 
-	// 		bLength += 1
-			
-	// 	}
+					document.querySelector('#errorekstra' + i + fag).remove()
+				}
+				
+			} else {
 
-	// 	double = false
-	// }
+				console.error('Din indtastning er ikke en karakter på 7-tals skalaen')
+				success = false
 
-	// for (let i = 0; i < CGrades.length; i++) {
+				if(!document.querySelector('#errorekstra' + i + fag)) {
+					const error = document.createElement('span')
+					error.className = `errorMessage`
+					error.id = `error${'ekstra' + i + fag}`
+					error.innerHTML = `
+						<i class="fas fa-caret-down fa-3x" id="pointing"></i>
+						<i class="fas fa-exclamation-triangle" id="errorIcon"></i>
+						Indtast en gyldig karakter
+										`
 
-	// 	if(CGrades[i] == 9999) {
+					document.querySelector('.column' + i + fag).append(error)
+				} 
+			}
+			//console.log('ekstra active')
+		} else {
 
-	// 		double = true
-	// 		//console.log("double", double);
-	// 		continue;
-	// 	}
-
-	// 	if(double) {
-
-	// 		total += ((CGrades[i]) * (vægte[2] / 2))
-
-	// 		qty += (vægte[2] / 2)
-
-	// 		cLength += 0.5
-
-	// 	} else {
-
-	// 		total += (CGrades[i] * vægte[2])
-			
-	// 		qty += vægte[2]
-
-	// 		cLength += 1
-			
-	// 	}
-
-	// 	double = false
-	// }
+			// console.log('ekstra not active')
+		}
+	}

@@ -224,6 +224,12 @@ function dynPage2(fag) {
   					<label for="samlet${i+1 + fag}">Både skriftligt og mundtligt?</label>
 				</div>
 
+				<div class="field">
+  					<input class="eksamen is-checkradio has-background-color is-white" id="eksamen${i+1 + fag}" type="checkbox" onclick="handleSamlet(${i+1}, '${fag}', true)">
+  					<label for="eksamen${i+1 + fag}">Eksamenskarakter</label>
+				</div>
+
+
 				<input class="input grades" id="samlet${i+1 + fag}Input" placeholder="Samlet karakter" required>`;
 		  detail.className = `column${i+1 + fag}`
 
@@ -272,36 +278,59 @@ function dynPage3(school) {
   setTimeout(function(){ el.scrollIntoView(); }, 50);
 }
 
-function handleSamlet(index, fag) {
-	const element = document.querySelector('#samlet' + index + fag)
+
+
+function handleSamlet(index, fag, type) {
+	let eksamen
+	let element
+	let ekstra
+
+
+	if(type) {
+
+		element = document.querySelector('#eksamen' + index + fag)
+		ekstra = document.querySelector('#eksamen' + index + fag + 'Input')
+		eksamen = true
+
+	} else {
+
+		element = document.querySelector('#samlet' + index + fag)
+		ekstra = document.querySelector('#ekstra' + index + fag + 'Input')
+		eksamen = false
+	}
+	
 	const column = document.querySelector('.column' + index + fag)
+	const første = document.querySelector('#samlet' + index  + fag + 'Input')
 
 
 		if(element.checked) {
-			document.querySelector('#samlet' + index  + fag + 'Input').setAttribute('placeholder', 'Skriftlig karakter')
 
-			const input = document.createElement('input')
+				const input = document.createElement('input')
 
-		  	input.className = `input grades ekstra`
-		  	input.id = `ekstra${index + fag}Input`
-		  	input.placeholder = `Mundtlig karakter`
-		  	input.required = true
+				if(eksamen) {
 
-			column.appendChild(input)
+					input.className = `input grades eksamen`
+			  		input.id = `eksamen${index + fag}Input`
+			  		input.placeholder = `Eksamenskarakter`
 
-			//console.log('checked')
+				} else {
+
+					input.className = `input grades ekstra`
+			  		input.id = `ekstra${index + fag}Input`
+			  		input.placeholder = `Mundtlig karakter`
+
+			  		første.setAttribute('placeholder', 'Skriftlig karakter')
+				}
+			  	
+			  	input.required = true
+				column.appendChild(input)
+
 		} else {
-			//console.log('not cheked')
-
-			const ekstra = document.querySelector('#ekstra' + index + fag + 'Input')
 
 			if(ekstra) {
 
 				ekstra.remove()
-				document.querySelector('#samlet' + index + fag + 'Input').setAttribute('placeholder', 'Samlet karakter')
-			} else {
-
-				//console.log('no ekstra input')
+				første.setAttribute('placeholder', 'Samlet karakter')
 			}	
 		}		  
 }
@@ -309,26 +338,52 @@ function handleSamlet(index, fag) {
 function getGrades(fag, number, next) {
 	let temp = []
 	let ekstra
+	let error = false
 	let success = true
 
 	for (var i = 1; i <= number; i++) {
-		let check = document.querySelector('#samlet' + i + fag).checked
+		let eksamen = document.querySelector('#eksamen' + i + fag + 'Input')
+		let ekstra = document.querySelector('#ekstra' + i + fag + 'Input')
+
 		let grade = document.querySelector('#samlet' + i + fag + 'Input').value
-
-		if(check) {
-
-			temp.push(9999)
-		}
+		let check = document.querySelector('#samlet' + i + fag).checked
 
 		if(accepted.includes(parseInt(grade))) {
 
 			temp.push(parseInt(grade))
+
+			error = false
 
 			if(document.querySelector('#error' + i + fag)) {
 
 					document.querySelector('#error' + i + fag).remove()
 			}
 		} else {
+
+			error = true
+		}
+
+		if(eksamen) {
+
+			// console.log('Eksamenskarakter here ' + i + fag)
+		
+			if(accepted.includes(parseInt(eksamen.value))) {
+
+				temp.push(parseInt(eksamen.value))
+
+				error = false
+
+				if(document.querySelector('#error' + i + fag)) {
+
+						document.querySelector('#error' + i + fag).remove()
+				}
+			} else {
+
+				error = true
+			}
+		}
+
+		if(error) {
 
 			console.error('Din indtastning er ikke en karakter på 7-tals skalaen')
 			success = false
@@ -348,7 +403,7 @@ function getGrades(fag, number, next) {
 			}
 		}
 
-		if(ekstra = document.querySelector('#ekstra' + i + fag + 'Input')) {
+		if(ekstra) {
 
 			if(check) {
 
@@ -411,7 +466,7 @@ function getGrades(fag, number, next) {
 
 	} else {
 
-		console.error('Der skete en fejl - prøv at opdatere siden')
+		console.error('Der skete en fejl - har du indtastet en gyldig karakter?')
 	}
 }
 
