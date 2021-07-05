@@ -19,7 +19,7 @@
 // init()
 
 function hover(element) {
-    console.log(element)
+    //console.log(element)
 
     const button = element.querySelector('button')
     const span = element.querySelector('span')
