@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "main.js",
   "dependencies": {
-    "bulma-checkradio": "^1.1.1"
+    "bulma-checkradio": "^1.1.1",
+    "firebase": "^8.7.0",
+    "requirejs": "^2.3.6"
   },
   "devDependencies": {
     "bulma": "^0.9.3",
